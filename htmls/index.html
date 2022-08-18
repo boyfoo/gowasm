@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="wasm_exec.js"></script>
+    <script>
+        if (!WebAssembly.instantiateStreaming) { // polyfill
+            WebAssembly.instantiateStreaming = async (resp, importObject) => {
+                const source = await (await resp).arrayBuffer();
+                return await WebAssembly.instantiate(source, importObject);
+            };
+        }
+
+        // 上面的都是固定代码
+        function runWasm(wasm_path) {
+            const go = new Go()
+            return new Promise((resolve, reject) => {
+                WebAssembly.instantiateStreaming(fetch(wasm_path), go.importObject)
+                    .then(result => {
+                        go.run(result.instance)
+                        resolve(result.instance)
+                    })
+                    .catch(error => {
+                        reject(error)
+                    })
+            })
+        }
+
+        function test() {
+            runWasm("myweb.wasm").then(ret => {
+                alert(window.myname)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+    </script>
+</head>
+<body>
+<button onclick="test()">执行</button>
+</body>
+</html>
