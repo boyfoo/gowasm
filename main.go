@@ -1,10 +1,7 @@
 package main
 
-import (
-	"syscall/js"
-)
+import "fmt"
 
 func main() {
-	js.Global().Set("myname", "shenyi")
-	<-make(chan struct{})
+	fmt.Println("老郑测试")
 }
