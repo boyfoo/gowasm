@@ -57,5 +57,5 @@
 下载`js`文件， `https://github.com/tinygo-org/tinygo/blob/v0.23.0/targets/wasm_exec.js`
 
 
-
+## go 仿照 vue 渲染html 5-6
 
