@@ -3,5 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("老郑测试")
+
+}
+
+//go:export test
+func Test() {
+	fmt.Println("我是你大哥")
 }

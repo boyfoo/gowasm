@@ -1,6 +1,6 @@
 # go wasm 学习笔记
 
-## wasm 形式
+## wasm 形式 1
 
 #### js文件
 
@@ -14,7 +14,7 @@
 
 浏览`htmls`下的`index.html`
 
-## 支持 wasi 形式
+## 支持 wasi 形式 2.0
 
 `go`要满足版本要求使用`1.18`
 
@@ -37,3 +37,12 @@
 编译命令`tinygo build -wasm-abi=generic -target=wasi -o main.wasm main.go`
 
 运行`wasmer --dir . main.wasm`
+
+ 
+## go 调用 wasi 3.0
+
+需要使用`cgo`所以要用`linux`系统
+
+修改了`main.go`文件，重新在`windows`编译：`tinygo build -scheduler=none -target=wasi -o main.wasm main.go`
+
+将文件同步到`linux`系统中，运行`go run call.go`
