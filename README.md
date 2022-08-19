@@ -38,7 +38,6 @@
 
 运行`wasmer --dir . main.wasm`
 
- 
 ## go 调用 wasi 3.0
 
 需要使用`cgo`所以要用`linux`系统
@@ -46,3 +45,17 @@
 修改了`main.go`文件，重新在`windows`编译：`tinygo build -scheduler=none -target=wasi -o main.wasm main.go`
 
 将文件同步到`linux`系统中，运行`go run call.go`
+
+## go 修改html 4.0
+
+修改`main.go`h和`html`代码，使用`go`代码修改元素
+
+原本可以使用`go`直接遍历，但是`go`编译后的包太大，所以依旧使用`tinygo`，但缺点是有的功能不支持
+
+`go`之前运行要使用`wasm_exec.js`，`tinygo`编译的也是一样，但是他有他自己的`js`文件
+
+下载`js`文件， `https://github.com/tinygo-org/tinygo/blob/v0.23.0/targets/wasm_exec.js`
+
+
+
+

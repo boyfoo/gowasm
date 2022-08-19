@@ -1,0 +1,1 @@
+tinygo build -o htmls/myweb.wasm -target wasm ./main.go

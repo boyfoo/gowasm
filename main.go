@@ -1,12 +1,11 @@
 package main
 
-import "fmt"
+import "syscall/js"
 
 func main() {
-
-}
-
-//go:export test
-func Test() {
-	fmt.Println("我是你大哥")
+	doc := js.Global().Get("document")
+	app := doc.Call("getElementById", "app")
+	if !app.IsNull() {
+		app.Set("innerHTML", "hello zxzx")
+	}
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="wasm_exec.js"></script>
+    <script src="wasm_exec_tinygo.js"></script>
     <script>
         if (!WebAssembly.instantiateStreaming) { // polyfill
             WebAssembly.instantiateStreaming = async (resp, importObject) => {
@@ -34,9 +34,24 @@
                 console.log(err)
             })
         }
+
+        function setHtml() {
+            document.getElementById("app").innerHTML = "abc"
+        }
+
+        function goSetHtml() {
+            runWasm("myweb.wasm").then(ret => {
+                console.log(ret)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     </script>
 </head>
 <body>
-<button onclick="test()">执行</button>
+<div id="app">
+
+</div>
+<button onclick="goSetHtml()">执行</button>
 </body>
 </html>
