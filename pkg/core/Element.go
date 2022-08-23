@@ -15,15 +15,20 @@ type Element struct {
 
 // 创建元素， 必须要执行Create才会真的创建。链式调用 。返回自己。  同时设置属性
 // 本课程来自 程序员在囧途(www.jtthink.com) 咨询群：98514334
-func (e *Element) Create() *Element {
+func (e *Element) Create(methods Methods) *Element {
 	if e.Node.Type != html.TextNode {
 		n := CreateElement(e.Node.Data)
 		for _, arr := range e.Node.Attr {
 			if arr.Key == "@click" {
-				AddEventListener(n, "click", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-					Alert("this is from @click")
-					return nil
-				}))
+				//AddEventListener(n, "click", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+				//	Alert("this is from @click")
+				//	return nil
+				//}))
+				// 目前 只支持函数名
+				if f, err := methods.GetMethod(arr.Val); err == nil {
+					AddEventListener(n, "click", f)
+				}
+
 			} else {
 				n.Call("setAttribute", arr.Key, arr.Val)
 			}
