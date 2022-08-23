@@ -2,11 +2,13 @@ package components
 
 import "mywasm/pkg/core"
 
-var TestComp = &core.Component{
+//业务 组件 ---模仿Vue 的。
+// 只需要直接 在Go里写struct ，就能和Vue一样
+var TestComp *core.Component = &core.Component{
 	Template: `
-<div>
-	<span style="color:red">hello jtthink</span>
-	<input type="button" value="点我" onclick="jtthink()" />
-</div>
+	<div>
+	   <span style="color:red">hello jtthink</span>
+	   <input type="button" value="点我" @click="test" />
+	</div>
 `,
 }

@@ -19,7 +19,16 @@ func (e *Element) Create() *Element {
 	if e.Node.Type != html.TextNode {
 		n := CreateElement(e.Node.Data)
 		for _, arr := range e.Node.Attr {
-			n.Call("setAttribute", arr.Key, arr.Val)
+			if arr.Key == "@click" {
+				AddEventListener(n, "click", js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+					Alert("this is from @click")
+					return nil
+				}))
+			} else {
+				n.Call("setAttribute", arr.Key, arr.Val)
+			}
+
+			// 本课程来自 程序员在囧途(www.jtthink.com) 咨询群：98514334
 		}
 		e.JsValue = n
 	} else {

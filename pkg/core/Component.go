@@ -9,6 +9,7 @@ import (
 // 组件原型
 type Component struct {
 	Template string
+	Methods  map[string]func(...interface{}) interface{}
 }
 
 func (c *Component) GetTemplate() string {
