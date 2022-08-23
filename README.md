@@ -56,9 +56,14 @@
 
 下载`js`文件， `https://github.com/tinygo-org/tinygo/blob/v0.23.0/targets/wasm_exec.js`
 
-
 ## go 仿照 vue 渲染html 5-6
 
 ## go 仿照 vue 组件化 7.0
 
 `tinygobuild.bat` 编译后，打开html
+
+## go 仿照 vue 调用函数 8.0 (简单方式)
+
+`components/test.go`内新增`onclick="jtthink()"`新增点击事件函数
+
+在`main.go`定义函数
