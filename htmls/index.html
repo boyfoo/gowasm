@@ -26,32 +26,21 @@
                     })
             })
         }
+        
 
-        function test() {
-            runWasm("myweb.wasm").then(ret => {
-                alert(window.myname)
-            }).catch(err => {
+        function runJue(){
+            runWasm("myweb.wasm").then(ret=>{
+
+            }).catch(err=>{
                 console.log(err)
             })
         }
-
-        function setHtml() {
-            document.getElementById("app").innerHTML = "abc"
-        }
-
-        function goSetHtml() {
-            runWasm("myweb.wasm").then(ret => {
-                console.log(ret)
-            }).catch(err => {
-                console.log(err)
-            })
-        }
+        runJue()
     </script>
 </head>
 <body>
 <div id="app">
 
 </div>
-<button onclick="goSetHtml()">执行</button>
 </body>
 </html>

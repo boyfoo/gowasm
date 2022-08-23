@@ -59,3 +59,6 @@
 
 ## go 仿照 vue 渲染html 5-6
 
+## go 仿照 vue 组件化 7.0
+
+`tinygobuild.bat` 编译后，打开html

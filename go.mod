@@ -1,4 +1,4 @@
-module gowasm
+module mywasm
 
 go 1.18
 
