@@ -67,3 +67,7 @@
 `components/test.go`内新增`onclick="jtthink()"`新增点击事件函数
 
 在`main.go`定义函数
+
+## go 仿照 vue 调用函数 8.1 (导出函数)
+
+修改`index.html`与`main.go` 重新编译后，点击页面新按钮

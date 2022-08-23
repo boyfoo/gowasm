@@ -12,29 +12,34 @@
             };
         }
 
+
+        let inst
+
         // 上面的都是固定代码
         function runWasm(wasm_path) {
             const go = new Go()
             return new Promise((resolve, reject) => {
                 WebAssembly.instantiateStreaming(fetch(wasm_path), go.importObject)
                     .then(result => {
-                        go.run(result.instance)
-                        resolve(result.instance)
+                        inst = result.instance
+                        go.run(inst)
+                        resolve(inst)
                     })
                     .catch(error => {
                         reject(error)
                     })
             })
         }
-        
 
-        function runJue(){
-            runWasm("myweb.wasm").then(ret=>{
 
-            }).catch(err=>{
+        function runJue() {
+            runWasm("myweb.wasm").then(ret => {
+
+            }).catch(err => {
                 console.log(err)
             })
         }
+
         runJue()
     </script>
 </head>
@@ -42,5 +47,6 @@
 <div id="app">
 
 </div>
+<input type="button" value="test" onclick="alert(inst.exports.mytest())">
 </body>
 </html>

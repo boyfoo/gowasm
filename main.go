@@ -16,7 +16,8 @@ func main() {
 	<-make(chan struct{})
 }
 
-//go:export test
-func Test() {
+//go:export mytest
+func Test() int {
 	fmt.Println("test")
+	return 123
 }
